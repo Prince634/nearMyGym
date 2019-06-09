@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpackNodeExternals = require('webpack-node-externals')
 
 
 
@@ -12,12 +13,12 @@ let client_config = {
     devtool: 'inline-source-map',
 
 	entry:{
-		client: './client.js'
+		main: './src/index.js'
 	},
 
 	output: {
 		filename:'[name].bundle.js',
-		path: path.resolve(__dirname,'dist')
+		path: path.resolve(__dirname,'public')
 	},
 
 	module: {
@@ -46,7 +47,7 @@ let client_config = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: './dist/[hash].[ext]'
+							name: './public/[hash].[ext]'
 						}
 					}
 				]
@@ -55,7 +56,17 @@ let client_config = {
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader'
+					loader: 'babel-loader',
+					options: {
+						presets:[
+						"@babel/preset-env", "@babel/preset-react"
+						],
+						"plugins": [
+						      [
+						        "@babel/plugin-proposal-class-properties"
+						      ]
+						]
+					}
 				}
 			}
 		]
@@ -68,18 +79,18 @@ let client_config = {
 			title: 'Travel Yarri ClientSide',
 			template: 'index.ejs',
 			filename: 'index.ejs'
-		}),*/
+		}),
 		new MiniCssExtractPlugin({
 	      // Options similar to the same options in webpackOptions.output
 	      // both options are optional
 	      filename: '[name].css',
 	      chunkFilename: '[id].css',
-	    }),
+	    }),*/
 
 	],
 
 
-	optimization: {
+/*	optimization: {
 	    minimizer: [new UglifyJsPlugin({
 	    	uglifyOptions: {
 	          output: {
@@ -97,7 +108,7 @@ let client_config = {
 	    		}
 	    	}
 	    }
-	}
+	}*/
 
 }
 
@@ -116,6 +127,8 @@ let server_config = {
 		path: path.resolve(__dirname,'server')
 	},
 
+	externals: [webpackNodeExternals()],
+	
 	module: {
 		rules: [
 			
@@ -142,7 +155,7 @@ let server_config = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: './dist/[hash].[ext]'
+							name: './public/[hash].[ext]'
 						}
 					}
 				]
@@ -154,7 +167,12 @@ let server_config = {
 					loader: 'babel-loader',
 					options: {
 						presets:[
-						"@babel/preset-env", "@babel/preset-react",
+						"@babel/preset-env", "@babel/preset-react"
+						],
+						"plugins": [
+						      [
+						        "@babel/plugin-proposal-class-properties"
+						      ]
 						]
 					}
 				}
