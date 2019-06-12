@@ -1,0 +1,16 @@
+<!doctype html> 
+<html>
+	<head>
+	<%if(helmetTags) {%>
+		<%helmetTags.title.toString()%>
+		<%helmetTags.meta.toString()%>
+	<%}%>
+	</head>
+	<body>
+		<div id ="root"><%htmlContent%></div>
+		<script>
+			window.INITIAL_STATE = <%storeData%>
+		</script>
+		<script src="main.bundle.js"></script>
+	</body>
+</html>

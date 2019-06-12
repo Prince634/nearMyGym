@@ -90,7 +90,7 @@ let client_config = {
 	],
 
 
-/*	optimization: {
+	optimization: {
 	    minimizer: [new UglifyJsPlugin({
 	    	uglifyOptions: {
 	          output: {
@@ -108,7 +108,7 @@ let client_config = {
 	    		}
 	    	}
 	    }
-	}*/
+	}
 
 }
 
