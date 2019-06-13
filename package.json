@@ -13,19 +13,20 @@
     "axios": "^0.19.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "dotenv": "^8.0.0",
+    "ejs": "^1.0.0",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-loadable": "^5.5.0",
+    "react-loadable-ssr-addon": "^0.1.9",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "serialize-javascript": "^1.7.0",
-    "webpack-merge": "^4.2.1",
-    "ejs": "^1.0.0"
+    "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

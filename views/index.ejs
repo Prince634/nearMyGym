@@ -5,6 +5,9 @@
 		<%-helmetTags.title.toString()%>
 		<%-helmetTags.meta.toString()%>
 	<%}%>
+	<% for(var i=0; i<bundles.length; i++) {%>
+        <script defer src="<%-bundles[i].file%>"></script>
+    <% } %>
 	<% for(var i=0; i<split_bundles.length; i++) {%>
         <script defer src="<%-split_bundles[i]%>"></script>
     <% } %>

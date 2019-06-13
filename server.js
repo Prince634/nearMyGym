@@ -17,31 +17,52 @@ import reducers from './src/js/reducers/index.js'
 import serialize from 'serialize-javascript'
 import { Helmet } from 'react-helmet'
 const fs = require('fs');
+import Loadable from 'react-loadable';
+import stats from './public/assets-loadable.json';
+//const stats = JSON.parse(_readFileSync(`./public/assets-loadable.json`))
+import { getBundles } from 'react-loadable-ssr-addon';
 
+var files = fs.readdirSync('./public')
+var split_bundles = []
+for(var i =0; i<files.length;i++){
+	if(files[i].includes('main')){
+		split_bundles.push(files[i])	
+	}
+}
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.all('*', function(req, res) {
 
-	var files = fs.readdirSync('./public')
-	var split_bundles = []
-	for(var i =0; i<files.length;i++){
-		split_bundles.push(files[i])
-	}
+	
 
 
 	let store = createStore(reducers, {}, applyMiddleware(thunk))
 	let route_matched = null
 	let promise = []
 	let matched_path = []
+	let modules = []
 	Routes.ROUTES.map((route)=>{
 		const match = matchPath(req.path, route)
 		if(match){
 			matched_path.push(match)
 		}
         
-        if(match && route.component && route.component.loadData){
-        	promise.push(route.component.loadData(store))	
+        if(match){
+
+        	if(route.component.preload) {
+
+        		promise.push(route.component.preload().then(r=>{
+        			return r.default||r
+        		}).then((c)=>{
+        			if (c.loadData) {
+                            return c.loadData(store)
+                        }
+                    return {}
+        		}))
+        	}else if(route.component && route.component.loadData){
+        		promise.push(route.component.loadData(store))	
+        	}
         }
         
 	})
@@ -50,30 +71,38 @@ app.all('*', function(req, res) {
 		
 		let context = {}
 		let content = ReactDOMServer.renderToString(
+				<Loadable.Capture report={moduleName => modules.push(moduleName)}>
 					<Provider store = {store}>
 						<StaticRouter context={context} location={req.url}>
 							<Routes/>
 						</StaticRouter>
-					</Provider>)
+					</Provider>
+				</Loadable.Capture>)
 
 		let helmet = Helmet.renderStatic()
+		let bundles = getBundles(stats, modules)
+		bundles = bundles.js?bundles.js:bundles
 		console.log('SSR API Success')
 		//res.send(getHtml(store, helmet, content))
 		store = `${serialize(store.getState())}`
-		res.render('index.ejs',{helmetTags: helmet, storeData: store, htmlContent: content, split_bundles: split_bundles })
+		res.render('index.ejs',{helmetTags: helmet, storeData: store, htmlContent: content, split_bundles: split_bundles, bundles: bundles })
 	}).catch((e)=>{
 
 
 		let context = {}
 		let content = ReactDOMServer.renderToString(
+				<Loadable.Capture report={moduleName => modules.push(moduleName)}>
 					<Provider store = {store}>
 						<StaticRouter context={context} location={req.url}>
 							<Routes/>
 						</StaticRouter>
-					</Provider>)
+					</Provider>
+				</Loadable.Capture>)
 		console.log('SSR API Fail')
 		store = `${serialize(store.getState())}`
-		res.render('index.ejs',{helmetTags: null, storeData: store, htmlContent: content, split_bundles : split_bundles})	
+		let bundles = getBundles(stats, modules)
+
+		res.render('index.ejs',{helmetTags: null, storeData: store, htmlContent: content, split_bundles : split_bundles, bundles: bundles })	
 
 	})
 
@@ -102,7 +131,13 @@ function getHtml(store, helmet, content){
 
 }
 
+function _readFileSync(filename) {
+    return fs.readFileSync(filename, 'utf-8')
+}
+
 // Serve the files on port 3000.
-app.listen(4000, function () {
-  console.log('Example app listening on port 4000!\n');
-});
+Loadable.preloadAll().then(() => {
+	app.listen(4000, function () {
+	  console.log('Example app listening on port 4000!\n');
+	})
+})

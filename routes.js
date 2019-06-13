@@ -2,21 +2,25 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import loadable from 'react-loadable';
 
-import HomeView from './src/js/container/HomeView.js'
-import ProfileView from './src/js/container/ProfileView.js'
+//import HomeView from './src/js/container/HomeView.js'
+//import ProfileView from './src/js/container/ProfileView.js'
 const LoadingComponent = () => <h3>please wait...</h3>;
 
 
-/*const HomeView = loadable({
+const HomeView = loadable({
 	loader: () => import('./src/js/container/HomeView.js'),
-	loading: LoadingComponent
+	loading: LoadingComponent,
+	modules: ['./src/js/container/HomeView.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/HomeView.js')]
 })
 
 const ProfileView = loadable({
 	loader: () => import('./src/js/container/ProfileView.js'),
-	loading: LoadingComponent
+	loading: LoadingComponent,
+	modules: ['./src/js/container/ProfileView.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/ProfileView.js')]
 })
-*/
+
 const routes = [
 	{ path: '/', component: HomeView, renderOnServer: true},
 	{ path: '/profile', component: ProfileView, renderOnServer: true}

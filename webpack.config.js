@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals')
-
+const ReactLoadableSSRAddon = require('react-loadable-ssr-addon');
 
 
 let client_config = {
@@ -75,6 +75,9 @@ let client_config = {
 	plugins: [
 		
 		new CleanWebpackPlugin(),
+		new ReactLoadableSSRAddon({
+	      filename: 'assets-loadable.json',
+	    })
 		/*new HtmlWebpackPlugin({
 			title: 'Travel Yarri ClientSide',
 			template: 'index.ejs',
