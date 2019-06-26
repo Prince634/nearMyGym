@@ -22,6 +22,8 @@ import stats from './public/assets-loadable.json';
 //const stats = JSON.parse(_readFileSync(`./public/assets-loadable.json`))
 import { getBundles } from 'react-loadable-ssr-addon';
 
+import  Actions from './src/js/action/index.js'
+
 var files = fs.readdirSync('./public')
 var split_bundles = []
 for(var i =0; i<files.length;i++){
@@ -66,6 +68,8 @@ app.all('*', function(req, res) {
         }
         
 	})
+	let server_render_data = store.dispatch(Actions.getServerInitialData())
+	promise.push(server_render_data)
 
 	Promise.all(promise).then(()=>{
 		
