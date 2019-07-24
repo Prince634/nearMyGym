@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import reducers from './src/js/reducers/index.js'
+import Style from './src/style.css'
 
 class App extends React.Component{
 

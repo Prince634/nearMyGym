@@ -26,17 +26,26 @@ import  Actions from './src/js/action/index.js'
 
 var files = fs.readdirSync('./public')
 var split_bundles = []
+var css_files = []
 for(var i =0; i<files.length;i++){
 	if(files[i].includes('main')){
 		split_bundles.push(files[i])	
+	}else if(files[i].includes('.css')){
+		/*files[i].readFile(filename, 'utf-8', (err, data) => {
+            
+        })*/
+        css_files.push(files[i])
 	}
+
 }
+
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.all('*', function(req, res) {
 
-	
+	//Read Css Async
 
 
 	let store = createStore(reducers, {}, applyMiddleware(thunk))
@@ -89,7 +98,7 @@ app.all('*', function(req, res) {
 		console.log('SSR API Success')
 		//res.send(getHtml(store, helmet, content))
 		store = `${serialize(store.getState())}`
-		res.render('index.ejs',{helmetTags: helmet, storeData: store, htmlContent: content, split_bundles: split_bundles, bundles: bundles })
+		res.render('index.ejs',{helmetTags: helmet, storeData: store, htmlContent: content, split_bundles: split_bundles, bundles: bundles, css_files: css_files })
 	}).catch((e)=>{
 
 
@@ -106,7 +115,7 @@ app.all('*', function(req, res) {
 		store = `${serialize(store.getState())}`
 		let bundles = getBundles(stats, modules)
 
-		res.render('index.ejs',{helmetTags: null, storeData: store, htmlContent: content, split_bundles : split_bundles, bundles: bundles })	
+		res.render('index.ejs',{helmetTags: null, storeData: store, htmlContent: content, split_bundles : split_bundles, bundles: bundles, css_files: css_files })	
 
 	})
 

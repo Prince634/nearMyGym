@@ -77,18 +77,17 @@ let client_config = {
 		new CleanWebpackPlugin(),
 		new ReactLoadableSSRAddon({
 	      filename: 'assets-loadable.json',
-	    })
+	    }),
 		/*new HtmlWebpackPlugin({
 			title: 'Travel Yarri ClientSide',
 			template: 'index.ejs',
 			filename: 'index.ejs'
-		}),
+		}),*/
 		new MiniCssExtractPlugin({
 	      // Options similar to the same options in webpackOptions.output
 	      // both options are optional
-	      filename: '[name].css',
-	      chunkFilename: '[id].css',
-	    }),*/
+	      filename: 'style.bundle.css'
+	    })
 
 	],
 

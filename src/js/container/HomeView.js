@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import  Actions from '../action/index.js'
 import HelmetTags from '../helpers/HelmetTags.js'
+import Header from '../components/Header.js'
 
 class Home extends React.Component{
 
@@ -16,13 +17,14 @@ class Home extends React.Component{
 	render(){
 		
 		return(
-			<div>
+
+			<div className="">
+				<Header {...this.props}/>
 				<HelmetTags title ="Home Page" description="Travel buddy is a platform to help travellers to befriend the People who are looking for travelling to the same city"/>
-				<p>Home Page</p>
-				<button className="colr" onClick={()=>{console.log('aaa');
-				this.props.history.push('/profile')}}>Go To Profile</button>
-				<h1>The User List is </h1>
-				<div>
+
+				<div id="home">
+					<h1>Home View</h1>
+					<p>Home Page &copy;<kbd>Ctrl + S</kbd></p>
 					{
 						this.props.USER && this.props.USER.user_list.length?
 						this.props.USER.user_list.map((user, i)=>{
@@ -30,7 +32,11 @@ class Home extends React.Component{
 						})
 						:''
 					}
+					<button className="colr" onClick={()=>{
+					this.props.history.push('/profile')}}>Go To &nbsp; &nbsp; Profile</button>
+					
 				</div>
+				
 			</div>
 			)
 	}

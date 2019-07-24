@@ -1,3 +1,128 @@
-button{
-	color:blue;
-}
+/*Start Style Signup html*/
+		.container{
+			box-sizing: border-box;
+			background: #4D48A0;
+			height: 100vh;
+			position: relative;
+		}
+		.box{
+			position: absolute;
+			right:0;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			background: #fff;
+			max-width: 300px;
+			padding: 20px;
+			border-radius: 2px;
+			margin: auto;
+			height: 400px;
+		}
+		.heading{
+			font-style: bold;
+			text-align: center;
+			font-weight: 500;
+			font-size: 28px;
+		}
+		.hd-txt{
+			text-align: center;
+		}
+		.blck p {
+			margin-bottom: 1px;
+		}
+		.lbl{
+			padding: 4.5px;
+			border-radius: 2px;
+			width: 100%;
+			border:#ddd solid 1px;
+		}
+		.btn{
+			width: 100%;
+			background: #16B80E;
+			padding: 4px;
+			margin-top:20px; 
+			color:#fff;
+			cursor: pointer;
+		}
+		.btn:hover{
+			background: #2C9227
+		}
+		.log-txt{
+			margin: 20px;
+			font-size: 13px;
+		}
+		.log{
+			color:#16B80E;
+			cursor: pointer;
+		}
+
+		.footer{
+			position: fixed;
+		    bottom: 0;
+		    right: 0;
+		    left: 0;
+		}
+/*End Style Signup html*/
+
+/*START HOTEL*/
+
+		body{
+			margin: 0px;
+			padding:0px;
+			box-sizing: border-box;
+		}
+		header{
+			background: #4D48A0;
+			position: sticky;
+			top: 0;
+		}
+		header div{
+			display: inline-block;
+		}
+		header span{
+			color:white;
+			padding: 14px;
+			display: inline-block;
+			cursor: pointer;
+			font-weight: 18px;
+		}
+		.right-nav{
+			float: right;
+			right: 2px;
+		}
+		.right-spn:hover {
+			background: #111111;
+		}
+		.clear-float{
+			clear: both;
+		}
+		.f-section{
+
+		}
+		.f-img{
+			width: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			height: 80vh;
+			position: absolute;
+		}
+		.f-txt{
+			position: relative;
+			text-align: center;
+			top: 60px;
+		}
+		.f-txt p{
+			color:#fff;
+		}
+		.ftxt-f{
+
+		}
+		.ftxt-s{
+
+		}
+		.ftxt-t{
+			background: #000;
+		}
+
+/*END HOTEL*/
