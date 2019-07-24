@@ -65,7 +65,9 @@
 /*End Style Signup html*/
 
 /*START HOTEL*/
-
+		.nrby-txt{
+			font-weight: 900;
+		}
 		body{
 			margin: 0px;
 			padding:0px;
