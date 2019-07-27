@@ -1,8 +1,9 @@
-import { LOAD_INITIAL_DATA, LOAD_SSR_INITIAL_DATA } from '../helpers/type.js'
+import { LOAD_INITIAL_DATA, LOAD_SSR_INITIAL_DATA, SELECT_LOCATION } from '../helpers/type.js'
 
 const defaultState = {
 	user_list: [],
-	loadedSSR:false
+	loadedSSR:false,
+	selectedLocation: {}
 }
 
 export default function (state = defaultState, action){
@@ -22,6 +23,15 @@ export default function (state = defaultState, action){
 				...state
 			}
 			newState.loadedSSR = true
+			return newState
+		}
+
+		case 'SELECT_LOCATION' : {
+			let newState = {
+				...state
+			}
+
+			newState.selectedLocation = action.payload
 			return newState
 		}
 		default: return state
