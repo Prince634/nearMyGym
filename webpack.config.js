@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpackNodeExternals = require('webpack-node-externals')
 const ReactLoadableSSRAddon = require('react-loadable-ssr-addon');
+const webpack = require('webpack');
 
 
 let client_config = {
@@ -45,10 +46,10 @@ let client_config = {
 				test: /\.(png|svg|jpg|jpeg|gif)$/,
 				use: [
 					{
-						loader: 'file-loader',
+						loader: 'file-loader'/*,
 						options: {
 							name: './public/[hash].[ext]'
-						}
+						}*/
 					}
 				]
 			},
@@ -87,7 +88,10 @@ let client_config = {
 	      // Options similar to the same options in webpackOptions.output
 	      // both options are optional
 	      filename: 'style.bundle.css'
-	    })
+	    }),
+	    new webpack.DefinePlugin({
+            "ASSETS_BASE_URL": JSON.stringify("/images")
+        })
 
 	],
 
@@ -130,6 +134,11 @@ let server_config = {
 	},
 
 	externals: [webpackNodeExternals()],
+	plugins:[
+		new webpack.DefinePlugin({
+            "ASSETS_BASE_URL": JSON.stringify("/images")
+        })
+	],
 	
 	module: {
 		rules: [

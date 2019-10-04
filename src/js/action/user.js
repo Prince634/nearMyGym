@@ -41,3 +41,11 @@ export const selectLocation = (city) => (dispatch) => {
 		payload: city
 	})
 }
+
+export const getAllCities = (cb) => (dispatch) => {
+	return API_GET(`https://docprime.com/api/v1/diagnostic/allmatrixcities`).then((resp)=>{
+		if(cb)cb(resp)
+	}).catch((e)=>{
+
+	})
+}

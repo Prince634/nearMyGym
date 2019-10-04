@@ -43,6 +43,7 @@ for(var i =0; i<files.length;i++){
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use('/images',express.static(path.join(__dirname, '../images')));
 app.all('*', function(req, res) {
 
 	//Read Css Async
@@ -71,7 +72,7 @@ app.all('*', function(req, res) {
                         }
                     return {}
         		}))
-        	}else if(route.component && route.component.loadData){
+        	}else if(route.component && route.component.loadData && route.renderOnServer){
         		promise.push(route.component.loadData(store))	
         	}
         }

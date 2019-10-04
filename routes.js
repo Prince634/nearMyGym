@@ -28,10 +28,18 @@ const LoginView = loadable({
   	webpack: () => [require.resolveWeak('./src/js/container/LoginPage.js')]
 })
 
+const Portal = loadable({
+	loader: () => import('./src/js/container/PortalView.js'),
+	loading: LoadingComponent,
+	modules: ['./src/js/container/PortalView.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/PortalView.js')]
+})
+
 const routes = [
 	{ path: '/', component: HomeView, renderOnServer: true},
 	{ path: '/profile', component: ProfileView, renderOnServer: true},
-	{ path: '/login', component: LoginView, renderOnServer: true}
+	{ path: '/login', component: LoginView, renderOnServer: true},
+	{ path: '/portal', component: Portal }
 ]
 
 class Routes extends React.Component{

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Near My Home|Rent Propery</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script type="text/javascript">
+		function hamburgerClicked(){
+			document.getElementsByClassName('left-menu')[0].style.display='block';
+			document.getElementsByClassName('overlay')[0].style.display='block';
+
+		}
+		function toggleLeftBar(){
+			document.getElementsByClassName('left-menu')[0].style.display='none';
+			document.getElementsByClassName('overlay')[0].style.display='none';
+
+		}
+		function toggleTabs(type) {
+			if(document.getElementById(type)) {
+				let hght = document.getElementById(type).offsetTop-document.getElementById('home-tabs').clientHeight-60
+				window.scrollTo(0, hght)
+				toggle()
+			}
+		}
+		function toggle(){
+			let tabElems = document.getElementsByClassName('tab-sctn')
+				for(var i=0;i<tabElems.length;i++) {
+					if(tabElems[i].classList.contains('tab-sctn-active')){
+						tabElems[i].classList.remove('tab-sctn-active')
+					}else {
+						tabElems[i].classList.add('tab-sctn-active')
+					}
+				}
+		}
+		function startAnimation(){
+			document.getElementById('anim').classList.add('start-animation')
+		}
+		function removeAnimation(){
+			document.getElementById('anim').classList.remove('start-animation')
+		}
+		/*window.onscroll= function(){
+			var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop
+			if( scrollPosition>(document.getElementById('rentUs').offsetTop) ||  scrollPosition>(document.getElementById('benefits').offsetTop) ){
+				toggle()
+			}
+		}*/
+	</script>
+	<link rel="icon" href="./images/faviconimg.png">
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+			padding: 0px;
+			margin: 0px;
+		}
+		body{
+			background-color: #F0EEEE;
+		}
+		#header{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 60px;
+		}
+		.nav-bar li a:hover{
+			background-color: #33C035;
+			border-radius: 2px;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.cursor{
+			cursor: pointer;
+		}
+		.left-nav{
+			display: flex;
+		}
+		.hamburger{
+			padding: 0px 10px 0px 2px;
+		}
+		.hamburger p{
+			border:2px;
+			width: 1.5rem;
+			padding-bottom: 3px;
+			padding-right: 2px;
+			margin-bottom: 4px;
+			background-color: #fff;
+		}
+		.left-menu{
+			display: none;
+			background-color: #fff;
+			width: 70vw;
+			z-index: 10;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			height: 100vh;
+			transition: all 2s ease-in-out;
+		}
+		.left-menu:hover{
+			display: block;
+		}
+		.overlay{
+			display: none;
+			background-color: rgba(0,0,0,.6);
+			opacity: 1;
+			z-index: 2;
+			height: 100vh;
+			width: 100vw;
+			position: fixed;
+		}
+		#container{
+			margin-top:61px;
+			display: flex;
+		}
+		#home-tabs{
+			margin:5px 0px 0px 0px; 
+			position: sticky;
+			top: 60px;
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+		}
+		.tab-sctn{
+			flex: 1;
+			display: flex;
+    		justify-content: center;
+		}
+		.tab-sctn-active{
+			border-bottom: solid;
+			border-color: orange;
+		}
+		.tab-scn-txt{
+			padding: 4px;
+
+		}
+		.tabs-ind-stng{
+			margin: 2px;
+			border-radius: 5px;
+		}
+		#rentUs{
+			margin: 12px;
+		}
+		#benefits{
+			margin: 12px;
+		}
+		.tabs-heading{
+			padding-left: 5px;
+			font-weight: 500;
+			background-color:#e0e0e0;
+		}
+		.tabs-txt{
+			display: inline-block;
+			padding: 4px;
+			margin: 3px;
+		}
+		.tab-cntnt{
+			margin: 2px;
+			background-color: #fff;
+		}
+		.entry-img-div{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.entry-img{
+			width: 100%;
+			height: 350px;
+		}
+		span[prince]{
+			color:red;
+		}
+		#anim{
+			background-color: blue;
+			height: 10px;
+			width: 40px;
+			border-radius: 3px;
+			position: relative;
+		}
+		.start-animation{/*
+			animation-name: animation1;
+			animation-duration: 3s;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+			animation-timing-function: ease-in;*/
+			animation: animation1 5s forwards ease-in-out;
+		}
+
+		@keyframes animation1{
+			25%{
+				top: 0;
+				left: 140px;
+			}
+			50%{
+				top:50vh;
+				left:140px;
+			}
+			75%{
+				top: 50vh;
+				left:0;
+			}
+
+		}
+		@media(min-width: 561px) {
+			/*Start Header for Desktop*/
+				body{
+				}
+				#header{
+					background-color: #495049;
+					display: flex;
+					padding: 1rem;
+					flex-wrap: wrap;
+				}
+				.hdr-prm-txt{
+					color:#33C035;
+					flex: 1;
+				}
+				.hdr-prm-txt i{
+					color:#fff;
+				}
+				.nav-bar{
+					display: flex;
+					flex: 1;
+					justify-content: flex-end;
+					padding: 4px;
+				}
+				.nav-bar li a{
+					padding: 12px;
+					color:#fff;
+					font-weight: 800;
+				}
+				#container{
+					flex-direction: column;
+				}
+				.container-row{
+					flex: 1;
+					display: flex;
+					flex-direction: row;
+				}
+				.row-tab{
+					display: flex;
+					flex:1;
+					height: 200px;
+					flex-wrap: wrap;
+					justify-content: center;
+					align-items: center;
+					/*border-bottom: solid;
+					border-right: solid;
+					border-color: coral;*/
+					background-color: #F98968;
+				}
+				.row-img{
+					height: 60px;
+					width: 80px;
+					margin-right: 3px;
+				}
+			/*End Header for Desktop*/
+		}
+		@media(max-width: 560px) {
+			/*Start Header for Mobile*/
+			body{
+			}
+			#header{
+				background-color: #495049;
+				display: flex;
+				padding: 1rem 0px 1rem 1rem;
+				flex-wrap: wrap;
+			}
+			.hdr-prm-txt{
+				color:#33C035;
+				flex: 1;
+			}
+			.hdr-prm-txt i{
+				color:#fff;
+			}
+			.nav-bar{
+				display: flex;
+				flex: 1;
+				justify-content: flex-end;
+				padding: 2px;
+			}
+			.nav-bar li a{
+				padding: 8px;
+				color:#fff;
+				font-weight: 800;
+			}
+			.hide-mbl{
+				display: none;
+			}
+			#container{
+				flex-direction: column;
+			}
+			.container-row{
+				display: flex;
+				flex-direction: column;
+			}
+			.row-tab{
+				width: 100%;
+				height: 200px;
+				margin-bottom: 3px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				/*border-bottom: solid;
+				border-color: coral;*/
+				background-color: #F98968;
+			}
+			.row-img{
+				height: 60px;
+				width: 80px;
+				padding-bottom: 3px;
+			}
+			/*End Header for Mobile*/
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="left-nav">
+			<div class="hamburger cursor" onclick="hamburgerClicked()">
+				<p class="ham-menu"></p>
+				<p class="ham-menu"></p>
+				<p class="ham-menu"></p>
+			</div>
+			<h3 class="hdr-prm-txt">near<i>MyHome</i></h3>	
+		</div>
+		<div class="nav-bar">
+			<li class="hide-mbl"><a href="#home">Home</a></li>
+			<li class="hide-mbl"><a href="#home">About</a></li>
+			<li><a href="#home">Login</a></li>
+		</div>
+	</div>
+	<div class="overlay" onclick="toggleLeftBar()"></div>
+	<div class="left-menu">
+		<h2>Hello Bhangi Kaisi hai</h2>
+		<ul class="left-mnu-ul">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<div id="container">
+		<div class="container-row">
+			<div class="row-tab">
+					<img class="row-img" src='./images/cityscape.png'/>
+					<div>Find Your Dream House</div>
+			</div>
+			<div class="row-tab">
+				<img class="row-img" src='./images/hand.png'/>
+					<div>Looking For PG</div>	
+			</div>
+		</div>
+		<div class="container-row">
+			<div class="row-tab">
+					<img class="row-img" src='./images/home-insurance.png'/>
+					<div>Lease Property</div>
+			</div>
+			<div class="row-tab">
+					<img class="row-img" src='./images/bed.png'/>
+					<div>Looking for Furniture</div>
+			</div>
+		</div>
+		<div class="container-row">
+			<div class="row-tab">
+					<img class="row-img" src='./images/school.png'/>
+					<div>Request For Customize Flat/PG/Bungalow</div>
+			</div>
+		</div>
+	</div>
+	<!-----TABS---------->
+	<div id='home-tabs'>
+		<div class="tab-sctn tab-sctn-active">
+			<span class="tab-scn-txt cursor" onclick="toggleTabs('rentUs')">Why Rent From Us</span>
+		</div>
+		<div class="tab-sctn">
+			<span class="tab-scn-txt cursor" onclick="toggleTabs('benefits')">Benefits</span>
+		</div>
+	</div>
+
+	<!----Start Animation Tabs---->
+		<button onclick="startAnimation()">Load Info</button>
+		<button onclick="removeAnimation()">Reset Info</button>
+		<div id="anim"></div>
+
+	<!--End Animation ---->
+	<div id="rentUs" class="tabs-ind-stng">
+		<h2 class="tabs-heading">Proper Billing Agreement</h2>
+		<div class="tab-cntnt">
+			<span class="tabs-txt">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+
+			<span class="tabs-txt" prince="a">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+			<span class="tabs-txt">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+			<span class="tabs-txt">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+		</div>
+	</div>
+	<div id="benefits" class="tabs-ind-stng">
+		<h2 class="tabs-heading">Benefits of Renting From nearMyHome</h2>
+		<div class="tab-cntnt">
+			<span class="tabs-txt" prince="a">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+			<span class="tabs-txt">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+			<span class="tabs-txt">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+			<span class="tabs-txt" prince="a">The biggest benefit of owning a rental property is that the renters will provide you with a direct income stream.</span>
+		</div>
+	</div>
+	<div class="entry-img-div">
+		<img class="entry-img" src='./dummyImage/roadmap.jpg'/>
+	</div>
+</body>
+</html>

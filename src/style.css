@@ -1,3 +1,7 @@
+body{
+	background-color: #F8F6F6;
+}
+
 /*Start Style Signup html*/
 		.container{
 			box-sizing: border-box;
@@ -73,30 +77,29 @@
 			padding:0px;
 			box-sizing: border-box;
 		}
-		header{
+		.header{
 			background: #4D48A0;
 			position: sticky;
 			top: 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
 		}
-		header div{
-			display: inline-block;
-		}
-		header span{
+		.header span{
 			color:white;
-			padding: 14px;
-			display: inline-block;
+			padding: 16px 8px;
 			cursor: pointer;
-			font-weight: 18px;
+		}
+		.left-nav{
+
 		}
 		.right-nav{
-			float: right;
-			right: 2px;
+			display: flex;
+			justify-content: flex-end;
 		}
 		.right-spn:hover {
 			background: #111111;
-		}
-		.clear-float{
-			clear: both;
 		}
 		.f-section{
 
@@ -128,3 +131,48 @@
 		}
 
 /*END HOTEL*/
+
+/*********START PORTAL**********************/
+.prtlBody{
+	padding: 10px 2px;
+}
+
+.srch-bar{
+	justify-content: center;
+    display: flex;
+}
+.srch-text-bar{
+	background-color: #fff;
+	padding: 10px;
+    width: 80%;
+    border: 2px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: rebeccapurple;
+}
+.srch-list{
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 8px 0px;
+}
+.srch-card{
+	width: 80%;
+	color: grey;
+	text-align: center;
+	padding: 2px;
+	/*border:1px;
+	border-color: black;
+	border-style: solid;
+
+	border-left-color: #fff;
+	border-right-color: #fff;*/
+	cursor: pointer;
+}
+
+.srch-card:hover{
+	background-color: #E0DCDC;
+}
+
+/*********END PORTAL**********************/
