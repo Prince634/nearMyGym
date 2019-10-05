@@ -9,25 +9,38 @@ export default (props)=>{
 	
 	function handleInput(e){
 		setSearchString(e.target.value);
-		let getFilteredData = FilteredSearch(e.target.value, filtered_list);
-		setSearchList(getFilteredData);
+		let getFilteredData = FilteredSearch(e.target.value, search_list);
+		getFilterList(getFilteredData);
 	}
 
 	function getSearchList(){
 		props.getAllCities((resp)=>{
 			getFilterList(resp);
+			setSearchList(resp);
 		})
 	}
 
+	function handleBlur(e) {
+
+	}
+
+	function handleCrossClick() {
+		getFilterList(search_list)
+		setSearchString([])
+	}
 	return(
 		<div className="prtlBody">
 			<div className="srch-bar">
-				<input type="text" className="srch-text-bar" onChange={(e)=>handleInput(e)} onFocus={()=>getSearchList()} value={searchString} onBlur={(e)=>handleBlur()}/>
+				<input type="text" className="srch-text-bar" onChange={(e)=>handleInput(e)} onFocus={()=>getSearchList()} value={searchString} onBlur={(e)=>handleBlur(e)}/>
+				{
+					searchString && searchString.length>0 && <img className="cross-icn" src={ASSETS_BASE_URL+"/red-cut.png"} onClick={()=>handleCrossClick()}/>
+				}
+				
 			</div>
 			{
-				search_list && search_list.length>0 && <div className="srch-list">
+				filtered_list && filtered_list.length>0 && <div className="srch-list">
 				{
-					search_list.map((data, key)=>{
+					filtered_list.map((data, key)=>{
 						return <div className="srch-card" key={key}>{data.name}</div>
 					})
 				}

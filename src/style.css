@@ -174,5 +174,10 @@ body{
 .srch-card:hover{
 	background-color: #E0DCDC;
 }
+.cross-icn{
+	position: absolute;
+	cursor: pointer;
+	right: 0;
+}
 
 /*********END PORTAL**********************/

@@ -43,7 +43,7 @@ for(var i =0; i<files.length;i++){
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use('/images',express.static(path.join(__dirname, '../images')));
+app.use('/images',express.static('images'));
 app.all('*', function(req, res) {
 
 	//Read Css Async

@@ -19,7 +19,8 @@ let client_config = {
 
 	output: {
 		filename:'[name].bundle.js',
-		path: path.resolve(__dirname,'public')
+		path: path.resolve(__dirname,'public'),
+		publicPath: '/public'
 	},
 
 	module: {
@@ -46,10 +47,10 @@ let client_config = {
 				test: /\.(png|svg|jpg|jpeg|gif)$/,
 				use: [
 					{
-						loader: 'file-loader'/*,
+						loader: 'file-loader',
 						options: {
-							name: './public/[hash].[ext]'
-						}*/
+							name: '[name].[ext]'
+						}
 					}
 				]
 			},
@@ -166,7 +167,7 @@ let server_config = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: './public/[hash].[ext]'
+							name: '[name].[ext]'
 						}
 					}
 				]
