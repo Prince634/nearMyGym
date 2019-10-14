@@ -19,8 +19,7 @@ let client_config = {
 
 	output: {
 		filename:'[name].bundle.js',
-		path: path.resolve(__dirname,'public'),
-		publicPath: '/public'
+		path: path.resolve(__dirname,'public')
 	},
 
 	module: {

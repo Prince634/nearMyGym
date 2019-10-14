@@ -14,6 +14,7 @@ export default (props)=>{
 	}
 
 	function getSearchList(){
+		setSearchString('');
 		props.getAllCities((resp)=>{
 			getFilterList(resp);
 			setSearchList(resp);
@@ -28,10 +29,17 @@ export default (props)=>{
 		getFilterList(search_list)
 		setSearchString([])
 	}
+
+	function handleCardClicked(data){
+		setSearchString(data.name);
+		setSearchList([]);
+		getFilterList([]);
+	}
+
 	return(
 		<div className="prtlBody">
 			<div className="srch-bar">
-				<input type="text" className="srch-text-bar" onChange={(e)=>handleInput(e)} onFocus={()=>getSearchList()} value={searchString} onBlur={(e)=>handleBlur(e)}/>
+				<input type="text" className="srch-text-bar" placeholder ="Search Your City" onChange={(e)=>handleInput(e)} onFocus={()=>getSearchList()} value={searchString} onBlur={(e)=>handleBlur(e)}/>
 				{
 					searchString && searchString.length>0 && <img className="cross-icn" src={ASSETS_BASE_URL+"/red-cut.png"} onClick={()=>handleCrossClick()}/>
 				}
@@ -41,7 +49,7 @@ export default (props)=>{
 				filtered_list && filtered_list.length>0 && <div className="srch-list">
 				{
 					filtered_list.map((data, key)=>{
-						return <div className="srch-card" key={key}>{data.name}</div>
+						return <div className="srch-card" key={key} onClick={()=>handleCardClicked(data)}>{data.name}</div>
 					})
 				}
 				</div>
