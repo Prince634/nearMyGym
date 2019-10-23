@@ -1,7 +1,8 @@
 FROM node:alpine
 
+WORKDIR /usr/dockerrep
 COPY ./ ./
 
 RUN npm install
-
-CMD ["npm","build"] 
+RUN npm run build
+CMD ["npm", "start"] 

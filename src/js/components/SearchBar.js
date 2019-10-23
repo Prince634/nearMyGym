@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FilteredSearch from './getFilteredSearchList.js'
+//import { useSelector } from 'react-redux';
 
 export default (props)=>{
 
@@ -35,6 +36,9 @@ export default (props)=>{
 		setSearchList([]);
 		getFilterList([]);
 	}
+
+	// const selectStoreData = useSelector(state=>state)
+	// console.log('store is', selectStoreData);
 
 	return(
 		<div className="prtlBody">

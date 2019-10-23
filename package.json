@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js --watch ",
-    "start": "node server/server.bundle.js"
+    "start": "node server/server.bundle.js",
+    "build-prod": "webpack --config webpack.config.js && node server/server.bundle.js"
   },
   "author": "",
   "license": "ISC",

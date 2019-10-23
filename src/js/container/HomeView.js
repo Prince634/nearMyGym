@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import  Actions from '../action/index.js'
 import HelmetTags from '../helpers/HelmetTags.js'
 import Header from '../components/Header.js'
-import UserInfo from '../components/userInfoForm.js'
 
 class Home extends React.Component{
 
@@ -52,7 +51,7 @@ class Home extends React.Component{
 				<Header {...this.props}/>
 				<HelmetTags title ="Home Page" description="Travel buddy is a platform to help travellers to befriend the People who are looking for travelling to the same city"/>
 
-				{/*<div id="home">
+				<div id="home">
 					<h1>Home View</h1>
 					<p>Home Page &copy;<kbd>Ctrl + S</kbd></p>
 					{
@@ -77,9 +76,7 @@ class Home extends React.Component{
 					<button className="colr" onClick={()=>{
 					this.props.history.push('/profile')}}>Go To Profile</button>
 					
-				</div>*/}
-
-				<UserInfo {...this.props}/>
+				</div>
 				
 			</div>
 			)
