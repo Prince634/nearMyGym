@@ -1,6 +1,9 @@
 body{
 	background-color: #F8F6F6;
 }
+.crsr{
+	cursor: pointer;
+}
 
 /*Start Style Signup html*/
 		.container{
@@ -85,6 +88,7 @@ body{
 			justify-content: space-between;
 			align-items: center;
 			flex-wrap: wrap;
+			z-index: 2;
 		}
 		.header span{
 			color:white;
@@ -257,3 +261,43 @@ body{
 
 
 /**********END SELECT OPTIONS***************/
+
+/***********START CAROUSEL VIEW ********************/
+.crsl{
+	margin: 0px 6px;
+}
+.crsl-hdng{
+	margin:2px 0px;
+}
+.crsl-view{
+	overflow: scroll;
+}
+.crsl-list{
+	position: relative;
+	display: flex;
+}
+.crsl-tab{
+	flex:1;
+	margin:4px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	position: relative;
+}
+.crsl-img-cnt{
+	min-width: 150px;
+	min-height: 150px;
+	background-color: #fff;
+}
+.crsl-img{
+	height: 120px;
+	width: 120px;
+}
+.nxtBtn{
+	position: absolute;
+	top: 0;
+	right: 40px;
+	transform: rotate(270deg);
+}
+
+/***********END CAROUSEL VIEW ********************/

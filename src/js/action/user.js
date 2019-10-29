@@ -1,4 +1,4 @@
-import { LOAD_INITIAL_DATA, LOAD_SSR_INITIAL_DATA, SELECT_LOCATION } from '../helpers/type.js'
+import { LOAD_INITIAL_DATA, LOAD_SSR_INITIAL_DATA, SELECT_LOCATION, SAVE_USER_CITY } from '../helpers/type.js'
 import { API_GET, API_POST } from './api.js'
 
 export const getInitialData = () => (dispatch) => {
@@ -47,5 +47,12 @@ export const getAllCities = (cb) => (dispatch) => {
 		if(cb)cb(resp)
 	}).catch((e)=>{
 
+	})
+}
+
+export const saveUserCity = (data) => (dispatch) => {
+	dispatch({
+		type: SAVE_USER_CITY,
+		payload: data
 	})
 }

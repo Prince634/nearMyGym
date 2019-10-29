@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import FilteredSearch from './getFilteredSearchList.js'
-//import { useSelector } from 'react-redux';
 
 export default (props)=>{
 
-	const [searchString, setSearchString] =  useState(''); 
+	const [searchString, setSearchString] =  useState(props.USER && props.USER.selectedCity?props.USER.selectedCity:''); 
 	const [search_list, setSearchList] =  useState([])
 	const [filtered_list, getFilterList] = useState([])
 	
@@ -33,12 +32,10 @@ export default (props)=>{
 
 	function handleCardClicked(data){
 		setSearchString(data.name);
+		props.saveUserCity(data.name);
 		setSearchList([]);
 		getFilterList([]);
 	}
-
-	// const selectStoreData = useSelector(state=>state)
-	// console.log('store is', selectStoreData);
 
 	return(
 		<div className="prtlBody">

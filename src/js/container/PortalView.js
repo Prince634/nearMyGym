@@ -11,7 +11,7 @@ class Portal extends React.Component{
 		return(
 			<div className="">
 				<Header {...this.props}/>
-				<HelmetTags title ="Portal Page" description="Travel buddy is a platform to help travellers to befriend the People who are looking for travelling to the same city"/>
+				<HelmetTags title ="Nearby Gym-The one place Where you can take care of your helathy lifestyle, Where you can enjoy various games." description="Travel buddy is a platform to help travellers to befriend the People who are looking for travelling to the same city"/>
 				<PortalView {...this.props}/>
 			</div>
 			)
@@ -25,7 +25,8 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getAllCities:(cb)=>dispatch(Actions.getAllCities(cb))
+		getAllCities:(cb)=>dispatch(Actions.getAllCities(cb)),
+		saveUserCity: (data) => dispatch(Actions.saveUserCity(data))
 	}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Portal)
