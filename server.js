@@ -18,8 +18,8 @@ import serialize from 'serialize-javascript'
 import { Helmet } from 'react-helmet'
 const fs = require('fs');
 import Loadable from 'react-loadable';
-import stats from './public/assets-loadable.json';
-//const stats = JSON.parse(_readFileSync(`./public/assets-loadable.json`))
+//import stats from './public/assets-loadable.json';
+const stats = JSON.parse(_readFileSync(`./public/assets-loadable.json`))
 import { getBundles } from 'react-loadable-ssr-addon';
 
 import  Actions from './src/js/action/index.js'

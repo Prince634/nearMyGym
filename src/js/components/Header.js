@@ -10,7 +10,7 @@ class Header extends React.Component {
 		return(
 			<div className="header">
 				<div className="left-nav">
-					<span className="nrby-txt">nearbyGym</span>
+					<span className="nrby-txt" onClick={this.navigateTo.bind(this, '')}>nearbyGym</span>
 				</div>
 				<div className="right-nav">
 					<span className="right-spn" onClick={this.navigateTo.bind(this, '')}>Home</span>

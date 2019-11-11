@@ -51,7 +51,7 @@ class Home extends React.Component{
 
 			<React.Fragment>
 				<Header {...this.props}/>
-				<HelmetTags title ="Home Page" description="Travel buddy is a platform to help travellers to befriend the People who are looking for travelling to the same city"/>
+				<HelmetTags title ="Gym House | Hub of all Gym's Near You With Best Offers Applicable" description="Gym House is collaboration of all local gym available.We Provide you best offers on your nearby gym with Personal Fitness Trainer & Diet Plans prepared by certified Gym Trainers."/>
 				<div id="home">
 					{
 						false && this.props.USER && this.props.USER.user_list && this.props.USER.user_list.length?
@@ -79,9 +79,9 @@ class Home extends React.Component{
 							</div>
 						}
 					</div>
-					<CarouselView />
-					<CarouselView />
-					<CarouselView />
+					<CarouselView dataType="1"/>
+					<CarouselView dataType="2"/>
+					<CarouselView dataType="3"/>
 					
 				</div>
 				
