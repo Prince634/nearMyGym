@@ -48,11 +48,14 @@ body{
 		}
 		.btn{
 			width: 100%;
-			background: #16B80E;
-			padding: 4px;
-			margin-top:20px; 
-			color:#fff;
-			cursor: pointer;
+		    background: #16B80E;
+		    padding: 10px;
+		    margin-top: 20px;
+		    color: #fff;
+		    cursor: pointer;
+		    border-radius: 3px;
+		    font-size: 14px;
+		    font-weight: 600;
 		}
 		.btn:hover{
 			background: #2C9227

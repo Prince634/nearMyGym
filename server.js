@@ -39,6 +39,17 @@ for(var i =0; i<files.length;i++){
 
 }
 
+function _readStyles() {
+    return new Promise((resolve, reject) => {
+       
+            Promise.all(css_files).then((styleFilesData) => {
+                resolve(styleFilesData)
+            }).catch((e) => {
+                reject(e)
+            })
+    })
+}
+
 
 
 app.set('view engine', 'ejs');
@@ -47,8 +58,8 @@ app.use('/images',express.static('images'));
 app.all('*', function(req, res) {
 
 	//Read Css Async
-
-
+_readStyles().then((styleFiles)=>{
+	let css_files = styleFiles
 	let store = createStore(reducers, {}, applyMiddleware(thunk))
 	let route_matched = null
 	let promise = []
@@ -80,6 +91,8 @@ app.all('*', function(req, res) {
 	})
 	let server_render_data = store.dispatch(Actions.getServerInitialData())
 	promise.push(server_render_data)
+	//res.set('Cache-Control', 'public, max-age=31557600'); // one year
+
 
 	Promise.all(promise).then(()=>{
 		
@@ -119,10 +132,7 @@ app.all('*', function(req, res) {
 		res.render('index.ejs',{helmetTags: null, storeData: store, htmlContent: content, split_bundles : split_bundles, bundles: bundles, css_files: css_files })	
 
 	})
-
-
-
-	//res.render(path.join(__dirname, 'dist', 'index.ejs'), {metaData:'Im prince'})
+	})
 })
 
 function getHtml(store, helmet, content){

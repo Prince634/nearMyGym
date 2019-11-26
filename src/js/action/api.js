@@ -16,8 +16,18 @@ export const API_GET = (url)=> {
 export const API_POST = (url, postData)=> {
 
 	return new Promise((resolve, reject)=> {
-		return Axios.post(url, postData).then((response)=>{
-			resolve(response.data)
-		})
+		return Axios.create({
+			  baseURL: url,
+			  timeout: 1000,
+			  headers: {'X-Custom-Header': 'foobar','Accept-Encoding':'gzip'}
+			}).then((response)=>{
+				console.log(response);
+				resolve(response.data);
+			})
+
+
+		// Axios.post(url, postData).then((response)=>{
+		// 	resolve(response.data)
+		// })
 	})
 }

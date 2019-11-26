@@ -18,6 +18,11 @@ class Header extends React.Component {
 					<span className="right-spn" onClick={this.navigateTo.bind(this, 'portal')}>Portal</span>
 					<span className="right-spn" onClick={this.navigateTo.bind(this, 'login')}>Login</span>
 				</div>
+				{
+					this.props.loader?
+					<p>Loading......</p>
+					:''
+				}
 			</div>
 			)
 	}

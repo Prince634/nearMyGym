@@ -29,7 +29,7 @@ app.get('/searchPlace', function(req, res){
 		if(req.query && req.query.searchString){
 			searchString = req.query.searchString
 		}
-		let data =  request(`https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyCQPOQQHyA2COIUGhG-PFIdUQ_faYjsN6c&input=${searchString}`, function (error, response, body) {
+		let data =  request({method:'GET',uri:`https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyCQPOQQHyA2COIUGhG-PFIdUQ_faYjsN6c&input=${searchString}`}, function (error, response, body) {
 		  res.send(body) 
 		});
 

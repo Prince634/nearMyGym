@@ -1,10 +1,10 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import loadable from 'react-loadable';
-
+import Header from './src/js/components/Header.js'
 //import HomeView from './src/js/container/HomeView.js'
 //import ProfileView from './src/js/container/ProfileView.js'
-const LoadingComponent = () => <h3>please wait...</h3>;
+const LoadingComponent = () => <Header loader={true}/>
 
 
 const HomeView = loadable({
