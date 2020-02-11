@@ -1,0 +1,158 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "0": [
+      2,
+      3,
+      4,
+      0
+    ],
+    "1": [
+      7,
+      1
+    ],
+    "./src/js/container/ChatView.js": [
+      0,
+      2
+    ],
+    "./src/js/container/PortalView.js": [
+      0,
+      3
+    ],
+    "./src/js/container/HomeView.js": [
+      0,
+      4
+    ],
+    "./src/js/container/ProductDescription.js": [
+      5
+    ],
+    "./src/js/container/LoginPage.js": [
+      6
+    ],
+    "./src/js/container/ProfileView.js": [
+      1,
+      7
+    ],
+    "./src/js/container/Project.js": [
+      8
+    ],
+    "main": [
+      "vendor~main",
+      "main"
+    ],
+    "vendor~main": [
+      "main",
+      "vendor~main"
+    ]
+  },
+  "assets": {
+    "0": {
+      "js": [
+        {
+          "file": "0.bundle.js",
+          "hash": "64ef14f9c84cc30d17ce",
+          "publicPath": "0.bundle.js"
+        }
+      ]
+    },
+    "1": {
+      "js": [
+        {
+          "file": "1.bundle.js",
+          "hash": "2c729e05d1699956a78b",
+          "publicPath": "1.bundle.js"
+        }
+      ]
+    },
+    "2": {
+      "js": [
+        {
+          "file": "2.bundle.js",
+          "hash": "08f0e69cd90ceeb39a37",
+          "publicPath": "2.bundle.js"
+        }
+      ]
+    },
+    "3": {
+      "js": [
+        {
+          "file": "3.bundle.js",
+          "hash": "35361b973180b0390efe",
+          "publicPath": "3.bundle.js"
+        }
+      ]
+    },
+    "4": {
+      "js": [
+        {
+          "file": "4.bundle.js",
+          "hash": "a1ad52190ee16e4ded4e",
+          "publicPath": "4.bundle.js"
+        }
+      ]
+    },
+    "5": {
+      "js": [
+        {
+          "file": "5.bundle.js",
+          "hash": "21f3f79e81089dfe01e2",
+          "publicPath": "5.bundle.js"
+        }
+      ]
+    },
+    "6": {
+      "js": [
+        {
+          "file": "6.bundle.js",
+          "hash": "e2d80a37ba12ec779c69",
+          "publicPath": "6.bundle.js"
+        }
+      ]
+    },
+    "7": {
+      "js": [
+        {
+          "file": "7.bundle.js",
+          "hash": "e56383ee5169a7966f57",
+          "publicPath": "7.bundle.js"
+        }
+      ]
+    },
+    "8": {
+      "js": [
+        {
+          "file": "8.bundle.js",
+          "hash": "ec1958ef52686bd7bf7c",
+          "publicPath": "8.bundle.js"
+        }
+      ]
+    },
+    "main": {
+      "css": [
+        {
+          "file": "style.bundle.css",
+          "hash": "fb59fff9c04144024011",
+          "publicPath": "style.bundle.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "main.bundle.js",
+          "hash": "fb59fff9c04144024011",
+          "publicPath": "main.bundle.js"
+        }
+      ]
+    },
+    "vendor~main": {
+      "js": [
+        {
+          "file": "vendor~main.bundle.js",
+          "hash": "0a05fe03850f6ffbcf0d",
+          "publicPath": "vendor~main.bundle.js"
+        }
+      ]
+    }
+  }
+}

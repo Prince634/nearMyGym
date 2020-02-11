@@ -18,8 +18,8 @@ let client_config = {
 	},
 
 	output: {
-		filename:'[name].[contenthash].bundle.js',
-		path: path.resolve(__dirname,'public')
+		filename:'[name].bundle.js',
+		path: path.resolve(__dirname,'dist')
 	},
 
 	module: {
@@ -33,7 +33,7 @@ let client_config = {
 			            options: {
 			              // you can specify a publicPath here
 			              // by default it uses publicPath in webpackOptions.output
-			              publicPath: '../../',
+			              //publicPath: '../../',
 			              hmr: process.env.NODE_ENV === 'development',
 			              reloadAll: true,
 			            },
@@ -129,12 +129,13 @@ let server_config = {
 	},
 
 	output: {
-		filename:'[name].[contenthash].bundle.js',
+		filename:'[name].bundle.js',
 		path: path.resolve(__dirname,'server')
 	},
 
 	externals: [webpackNodeExternals()],
 	plugins:[
+		new CleanWebpackPlugin(),
 		new webpack.DefinePlugin({
             "ASSETS_BASE_URL": JSON.stringify("/images")
         })
@@ -151,7 +152,7 @@ let server_config = {
 			            options: {
 			              // you can specify a publicPath here
 			              // by default it uses publicPath in webpackOptions.output
-			              publicPath: '../../',
+			              //publicPath: '../../',
 			              hmr: process.env.NODE_ENV === 'development',
 			              reloadAll: true,
 			            },

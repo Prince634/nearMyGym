@@ -17,6 +17,7 @@
 	<% for(var i=0; i<split_bundles.length; i++) {%>
         <script defer src="<%-split_bundles[i]%>"></script>
     <% } %>
+    <script src="/socket.io/socket.io.js"></script>
 	</head>
 	<body>
 		<div id ="root"><%-htmlContent%></div>

@@ -35,11 +35,35 @@ const Portal = loadable({
   	webpack: () => [require.resolveWeak('./src/js/container/PortalView.js')]
 })
 
+const ProductDescription = loadable({
+	loader: () => import('./src/js/container/ProductDescription.js'),
+	loading: LoadingComponent,
+	modules: ['./src/js/container/ProductDescription.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/ProductDescription.js')]
+})
+
+const ChatView = loadable({
+	loader: () => import('./src/js/container/ChatView.js'),
+	loading: LoadingComponent,
+	modules: ['./src/js/container/ChatView.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/ChatView.js')]
+})
+
+const Project = loadable({
+	loader: () => import('./src/js/container/Project.js'),
+	loading: LoadingComponent,
+	modules: ['./src/js/container/Project.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/Project.js')]
+})
+
 const routes = [
 	{ path: '/', component: HomeView, renderOnServer: true},
 	{ path: '/profile', component: ProfileView, renderOnServer: true},
 	{ path: '/login', component: LoginView, renderOnServer: true},
-	{ path: '/portal', component: Portal }
+	{ path: '/portal', component: Portal },
+	{ path: '/pdp', component: ProductDescription },
+	{ path: '/chat', component: ChatView },
+	{path: '/demo', component: Project}
 ]
 
 class Routes extends React.Component{

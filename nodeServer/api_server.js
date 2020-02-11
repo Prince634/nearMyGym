@@ -24,7 +24,7 @@ app.get('/user', function(req, res){
 })
 
 app.get('/searchPlace', function(req, res){
-	
+		console.log(req.query);
 		let searchString = ''
 		if(req.query && req.query.searchString){
 			searchString = req.query.searchString

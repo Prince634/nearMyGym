@@ -29,6 +29,11 @@ export default (props)=>{
             document.getElementById(`${dataType}_leftArrow`).classList.remove("d-none")
         }
     }
+
+    function navigateTo(){
+    	props.history.push('/pdp');
+    }
+
     const { dataType } = props;
 	return (
 		<div className="crsl">
@@ -37,35 +42,35 @@ export default (props)=>{
 				<div className={`crsl-list ${dataType}_list`}>
 					<div className="crsl-tab crsr">
 						<div className="crsl-img-cnt">
-							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={()=>{}}/>
+							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={navigateTo}/>
 						</div>
 						<p>Cult Fit, Sector 44 Gurgaon</p>
 					</div>
 
 					<div className="crsl-tab crsr">
 						<div className="crsl-img-cnt">
-							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={()=>{}}/>
+							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={navigateTo}/>
 						</div>
 						<p>Cult Fit, Sector 44 Gurgaon</p>
 					</div>
 
 					<div className="crsl-tab crsr">
 						<div className="crsl-img-cnt">
-							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={()=>{}}/>
+							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={navigateTo}/>
 						</div>
 						<p>Cult Fit, Sector 44 Gurgaon</p>
 					</div>
 
 					<div className="crsl-tab crsr">
 						<div className="crsl-img-cnt">
-							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={()=>{}}/>
+							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={navigateTo}/>
 						</div>
 						<p>Cult Fit, Sector 44 Gurgaon</p>
 					</div>
 
 					<div className="crsl-tab crsr">
 						<div className="crsl-img-cnt">
-							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={()=>{}}/>
+							<img className="crsl-img" src={ASSETS_BASE_URL+"/cureFit.jpg"} onClick={navigateTo}/>
 						</div>
 						<p>Cult Fit, Sector 44 Gurgaon</p>
 					</div>

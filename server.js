@@ -5,6 +5,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const express = require('express')
 const app = express()
 const path = require('path')
+const http = require('http')
+const socketio = require('socket.io');
 import Main from './src/js/container/HomeView.js'
 import React from 'react'
 import  ReactDOMServer from 'react-dom/server'
@@ -19,22 +21,62 @@ import { Helmet } from 'react-helmet'
 const fs = require('fs');
 import Loadable from 'react-loadable';
 //import stats from './public/assets-loadable.json';
-const stats = JSON.parse(_readFileSync(`./public/assets-loadable.json`))
+const stats = JSON.parse(_readFileSync(`./dist/assets-loadable.json`))
 import { getBundles } from 'react-loadable-ssr-addon';
 
 import  Actions from './src/js/action/index.js'
 
-var files = fs.readdirSync('./public')
+
+var server = http.createServer(app);
+const io = socketio(server);
+let count = 0;
+
+
+io.on('connection', (socket)=>{
+	console.log('new connection socket');
+	socket.emit('countUpdated', count);
+
+	// socket.join('join', ({username, room})=>{
+	// 	socket.emit('message');
+	// 	//Will Emit to particular room
+	// 	socket.broadcast.to(room).emit('message', 'msg');
+	// 	//io.to(room).emit('message','msg')
+	// })
+
+
+
+	socket.broadcast.emit('emitBroadcast', 'message');//Emit to all connected socket except the current one who emit msg
+
+	socket.on('increment', ()=>{
+		console.log('count updated on server', count);
+		count++;
+		socket.broadcast.emit('countUpdated', count);//only to that particular socket
+		//io.emit('countUpdated', count);//To all connected socket
+	})
+
+	socket.on('join', (dataParams) =>{
+
+		socket.join(dataParams.roomId);
+		console.log('JOIN');console.log(dataParams);
+		socket.broadcast.to(dataParams.roomId).emit('roomMessage', dataParams)
+	})
+
+	socket.on('disconnect', ()=>{
+		io.emit('msg', 'user left');
+	})
+})
+
+var files = fs.readdirSync('./dist')
 var split_bundles = []
 var css_files = []
 for(var i =0; i<files.length;i++){
 	if(files[i].includes('main')){
-		split_bundles.push(files[i])	
+		split_bundles.push(`${files[i]}`)	
 	}else if(files[i].includes('.css')){
 		/*files[i].readFile(filename, 'utf-8', (err, data) => {
             
         })*/
-        css_files.push(files[i])
+        css_files.push(`${files[i]}`)
 	}
 
 }
@@ -51,9 +93,17 @@ function _readStyles() {
 }
 
 
-
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static('dist'));
+// console.log(path.join(__dirname, 'dist'));
+// app.use('/dist', express.static(path.join(__dirname, 'dist')));
+
+// app.get('/enableGymNetworkRequest.js', function (req, res) {
+// 	res.setHeader('Content-type','application/javascript')
+// 	let fileNameP = path.join(__dirname, '../enableGymNetworkRequest.js')
+//     res.sendFile(fileNameP)
+// });
+
 app.use('/images',express.static('images'));
 app.all('*', function(req, res) {
 
@@ -161,7 +211,7 @@ function _readFileSync(filename) {
 
 // Serve the files on port 3000.
 Loadable.preloadAll().then(() => {
-	app.listen(4000, function () {
-	  console.log('Example app listening on port 4000!\n');
+	server.listen(4005, function () {
+	  console.log('Example app listening on port 4005!\n');
 	})
 })

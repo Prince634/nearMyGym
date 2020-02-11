@@ -79,9 +79,9 @@ class Home extends React.Component{
 							</div>
 						}
 					</div>
-					<CarouselView dataType="1"/>
-					<CarouselView dataType="2"/>
-					<CarouselView dataType="3"/>
+					<CarouselView dataType="1" history={this.props.history}/>
+					<CarouselView dataType="2" history={this.props.history}/>
+					<CarouselView dataType="3" history={this.props.history}/>
 					
 				</div>
 				
