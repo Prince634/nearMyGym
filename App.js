@@ -14,7 +14,7 @@ import SOCKET from './socket.js';
 class App extends React.Component{
 
 	componentDidMount(){
-		STORAGE.registerServiceWorker();
+		STORAGE.unregisterServiceWorker();
 		SOCKET.init(()=>{
 			console.log('clent socket');
 		});

@@ -103,6 +103,7 @@ app.use(express.static('dist'));
 // 	let fileNameP = path.join(__dirname, '../enableGymNetworkRequest.js')
 //     res.sendFile(fileNameP)
 // });
+app.use('/sw.js', express.static('sw.js'))
 
 app.use('/images',express.static('images'));
 app.all('*', function(req, res) {

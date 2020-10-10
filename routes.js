@@ -56,6 +56,13 @@ const Project = loadable({
   	webpack: () => [require.resolveWeak('./src/js/container/Project.js')]
 })
 
+const TodoView = loadable({
+	loader: () => import('./src/js/container/TodoView.js'),
+	loading: LoadingComponent,
+	modules: ['./src/js/container/TodoView.js'],
+  	webpack: () => [require.resolveWeak('./src/js/container/TodoView.js')]
+})
+
 const routes = [
 	{ path: '/', component: HomeView, renderOnServer: true},
 	{ path: '/profile', component: ProfileView, renderOnServer: true},
@@ -63,6 +70,7 @@ const routes = [
 	{ path: '/portal', component: Portal },
 	{ path: '/pdp', component: ProductDescription },
 	{ path: '/chat', component: ChatView },
+	{ path: '/work', component: TodoView },
 	{path: '/demo', component: Project}
 ]
 

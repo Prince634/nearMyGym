@@ -38,6 +38,9 @@
     "./src/js/container/Project.js": [
       8
     ],
+    "./src/js/container/TodoView.js": [
+      9
+    ],
     "main": [
       "vendor~main",
       "main"
@@ -129,18 +132,27 @@
         }
       ]
     },
+    "9": {
+      "js": [
+        {
+          "file": "9.bundle.js",
+          "hash": "908d4606bf940baa8cde",
+          "publicPath": "9.bundle.js"
+        }
+      ]
+    },
     "main": {
       "css": [
         {
           "file": "style.bundle.css",
-          "hash": "fb59fff9c04144024011",
+          "hash": "8f90b1a9798b46fe1da4",
           "publicPath": "style.bundle.css"
         }
       ],
       "js": [
         {
           "file": "main.bundle.js",
-          "hash": "fb59fff9c04144024011",
+          "hash": "8f90b1a9798b46fe1da4",
           "publicPath": "main.bundle.js"
         }
       ]
